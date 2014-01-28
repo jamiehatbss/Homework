@@ -1,3 +1,4 @@
+float angle;
 void setup() {
   size(400, 400);
   fill(255);
@@ -7,7 +8,20 @@ void setup() {
   drawCircle(400, 400, 25, -25, -25);
 }
 
+void draw() {
+  translate(width/2, height/2);
+
+  angle+=10;
+
+  rotate(radians(angle));
+  drawCircle(0, 400, 25, 25, -25);
+  drawCircle(400, 0, 25, -25, 25);
+  drawCircle(0, 0, 25, 25, 25);
+  drawCircle(400, 400, 25, -25, -25);
+}
+
 void drawCircle(float x, float y, float radius, int xDif, int yDif) {
+
   ellipse(x, y, radius, radius);
   if (x < height/2) {
     drawCircle(x+xDif, y+yDif, radius+15, xDif, yDif);
@@ -16,3 +30,4 @@ void drawCircle(float x, float y, float radius, int xDif, int yDif) {
     drawCircle(x+xDif, y+yDif, radius+15, xDif, yDif);
   }
 }
+
