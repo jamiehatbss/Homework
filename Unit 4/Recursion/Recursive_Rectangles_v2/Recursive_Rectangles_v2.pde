@@ -1,21 +1,26 @@
-void setup(){
-  size(300,300);
+void setup() {
+  size(300, 300);
 
-    rect(0,0,200,160);
-  rect(200,0,100,80);
-  rect(200,80,100,80);
-  rect(200,160,100,160);
-  rect(0,160,200,160);
-  drawRectangle(0,0,200,160);
+
+
+  drawRectangle(0, 0, 200, 160);
+
+  rect(275, 150, 125, 350);
+  rect(0, 0, 275, 150);
+  rect(0, 150, 275, 150);
+  rect(0, 275, 400-275, 150);
 }
 
-void drawRectangle(int x, int y, int w, int h){
-  fill(random(0,360));
+void drawRectangle(int randWidth, int randHeight) {
+  fill(random(0, 360));
 
-  rect(x/random(0,300),y/random(0,2),w/random(0,30),h/random(0,10));
-
+  rect(randWidth, randHeight, width-randWidth, height-randHeight);
+  rect(randWidth-randWidth, randHeight-randHeight, randWidth, randHeight);
+  rect(randWidth-randWidth, randHeight, randWidth, randHeight);
+  rect(randWidth-randWidth, randWidth, width-randWidth, randHeight);
   if (x<300) {
     //recurse
-  drawRectangle(x+1,y+1,w+1,h+1);
+    drawRectangle(randWidth, randHeight);
   }
 }
+
