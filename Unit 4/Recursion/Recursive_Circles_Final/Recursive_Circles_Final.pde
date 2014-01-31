@@ -9,11 +9,11 @@ void setup() {
 }
 
 void draw() {
-  translate(width/2, height/2);
-
-  angle+=10;
-
-  rotate(radians(angle));
+//  translate(width/2, height/2);
+//
+//  angle+=10;
+//
+//  rotate(radians(angle));
   drawCircle(0, 400, 25, 25, -25);
   drawCircle(400, 0, 25, -25, 25);
   drawCircle(0, 0, 25, 25, 25);
