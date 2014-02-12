@@ -25,8 +25,8 @@ void drawTree(int depth, float thickness) {
   // Exit condition for recursion
   if (depth > 0) {
     if(depth>9){
-    line(0,0,800,0);
-    translate(800,0);
+    line(0,0,400,0);
+    translate(400,0);
     strokeWeight(100 );
     }
 
@@ -34,7 +34,7 @@ void drawTree(int depth, float thickness) {
     pushMatrix();
     //randomize length
 
-    rotate(radians(random(-10, -60)));
+    rotate(radians(random(-100, -200)));
     strokeWeight(thickness);
     //    stroke(111, 62, 10); // medium brown
     line(0, 0, 100, 0); // draw branch
@@ -46,7 +46,7 @@ void drawTree(int depth, float thickness) {
     pushMatrix();
     //randomize lengths of branches
 
-    rotate(radians(random(5, 20)));
+    rotate(radians(random(10, 30)));
     strokeWeight(thickness);
     //    stroke(131, 93, 52); // lightest brown
     line(0, 0, 100, 0); // draw branch
