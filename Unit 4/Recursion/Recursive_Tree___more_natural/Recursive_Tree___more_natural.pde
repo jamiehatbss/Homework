@@ -11,27 +11,24 @@ void setup() {
   // thicker branches
   strokeWeight(15);
 
-  scale(0.3, 0.3);
+  scale(0.5, 0.5);
   // start tree off...
-  drawTree(10, 9,100);
+  drawTree(10, 9);
 }
 
 // drawTree
 // Purpose: Draws a tree with a certain number of levels of recursion
 //
 // Parameters:     depth          How many levels to recurse
-void drawTree(int depth, float thickness,float randomLength) {
+void drawTree(int depth, float thickness) {
 
   // Exit condition for recursion
   if (depth > 0) {
-    // base - 100 pixels long
-    stroke(46, 25, 1); // darkest brown
-    line(0, 0, 100, 0);
-
-    // move to end of base to draw branches
-    translate(100, 0);
-
-    // draw left branch
+    if(depth>9){
+    line(0,0,800,0);
+    translate(800,0);
+    strokeWeight(100 );
+    }
 
 
     pushMatrix();
@@ -40,36 +37,34 @@ void drawTree(int depth, float thickness,float randomLength) {
     rotate(radians(random(-10, -60)));
     strokeWeight(thickness);
     //    stroke(111, 62, 10); // medium brown
-    line(0, 0, randomLength, 0); // draw branch
-    translate(randomLength, 0); // translate to end before drawing next Y
-    drawTree(depth-1, thickness-1, randomLength-1);
+    line(0, 0, 100, 0); // draw branch
+    translate(random(20,100), 0); // translate to end before drawing next Y
+    drawTree(depth-1, thickness-1);
     popMatrix();
 
     // draw right branch
     pushMatrix();
     //randomize lengths of branches
-    randomLength= random(20, 100);
 
     rotate(radians(random(5, 20)));
     strokeWeight(thickness);
     //    stroke(131, 93, 52); // lightest brown
-    line(0, 0, randomLength, 0); // draw branch
-    translate(randomLength, 0); // translate to end before drawing next Y
-    drawTree(depth-1, thickness-1,randomLength-1);
+    line(0, 0, 100, 0); // draw branch
+    translate(random(20,100), 0); // translate to end before drawing next Y
+    drawTree(depth-1, thickness-1);
     popMatrix();
-    
-    
-     // draw third branch
-    pushMatrix();
-    //randomize lengths of branches
-    randomLength= random(20, 100);
 
-    rotate(radians(2));
-    strokeWeight(thickness);
-    //    stroke(131, 93, 52); // lightest brown
-    line(0, 0, randomLength, 0); // draw branch
-    translate(randomLength, 0); // translate to end before drawing next Y
-    drawTree(depth-1, thickness-1, randomLength-1);
-    popMatrix();
+
+//    // draw third branch
+//    pushMatrix();
+//    //randomize lengths of branches
+//
+//    rotate(radians(2));
+//    strokeWeight(thickness);
+//    //    stroke(131, 93, 52); // lightest brown
+//    line(0, 0, 100, 0); // draw branch
+//    translate(random(30,100), 0); // translate to end before drawing next Y
+//    drawTree(depth-1, thickness-1);
+//    popMatrix();
   }
 }
