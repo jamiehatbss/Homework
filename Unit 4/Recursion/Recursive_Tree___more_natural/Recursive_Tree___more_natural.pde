@@ -13,7 +13,7 @@ void setup() {
 
   scale(0.5, 0.5);
   // start tree off...
-  drawTree(10, 9);
+  drawTree(10, 25);
 }
 
 // drawTree
@@ -25,21 +25,21 @@ void drawTree(int depth, float thickness) {
   // Exit condition for recursion
   if (depth > 0) {
     if(depth>9){
-    line(0,0,400,0);
-    translate(400,0);
-    strokeWeight(100 );
+    strokeWeight(25);
+    line(0,0,250,0);
+    translate(250,0);
     }
 
 
     pushMatrix();
     //randomize length
 
-    rotate(radians(random(-100, -200)));
+    rotate(radians(random(-10, -60)));
     strokeWeight(thickness);
     //    stroke(111, 62, 10); // medium brown
     line(0, 0, 100, 0); // draw branch
-    translate(random(20,100), 0); // translate to end before drawing next Y
-    drawTree(depth-1, thickness-1);
+    translate(random(40,100), 0); // translate to end before drawing next Y
+    drawTree(depth-1, thickness*0.6);
     popMatrix();
 
     // draw right branch
@@ -50,8 +50,8 @@ void drawTree(int depth, float thickness) {
     strokeWeight(thickness);
     //    stroke(131, 93, 52); // lightest brown
     line(0, 0, 100, 0); // draw branch
-    translate(random(20,100), 0); // translate to end before drawing next Y
-    drawTree(depth-1, thickness-1);
+    translate(random(40,100), 0); // translate to end before drawing next Y
+    drawTree(depth-1, thickness*0.6);
     popMatrix();
 
 
