@@ -1,4 +1,3 @@
-float randomLength;
 void setup() {
 
   size(800, 800);
@@ -14,14 +13,14 @@ void setup() {
 
   scale(0.3, 0.3);
   // start tree off...
-  drawTree(10, 9);
+  drawTree(10, 9,100);
 }
 
 // drawTree
 // Purpose: Draws a tree with a certain number of levels of recursion
 //
 // Parameters:     depth          How many levels to recurse
-void drawTree(int depth, float thickness) {
+void drawTree(int depth, float thickness,float randomLength) {
 
   // Exit condition for recursion
   if (depth > 0) {
@@ -37,14 +36,13 @@ void drawTree(int depth, float thickness) {
 
     pushMatrix();
     //randomize length
-    randomLength= random(20, 100);
 
     rotate(radians(random(-10, -60)));
     strokeWeight(thickness);
     //    stroke(111, 62, 10); // medium brown
     line(0, 0, randomLength, 0); // draw branch
     translate(randomLength, 0); // translate to end before drawing next Y
-    drawTree(depth-1, thickness-1);
+    drawTree(depth-1, thickness-1, randomLength-1);
     popMatrix();
 
     // draw right branch
@@ -57,7 +55,7 @@ void drawTree(int depth, float thickness) {
     //    stroke(131, 93, 52); // lightest brown
     line(0, 0, randomLength, 0); // draw branch
     translate(randomLength, 0); // translate to end before drawing next Y
-    drawTree(depth-1, thickness-1);
+    drawTree(depth-1, thickness-1,randomLength-1);
     popMatrix();
     
     
@@ -66,12 +64,12 @@ void drawTree(int depth, float thickness) {
     //randomize lengths of branches
     randomLength= random(20, 100);
 
-    rotate(radians(random(5, 20)));
+    rotate(radians(2));
     strokeWeight(thickness);
     //    stroke(131, 93, 52); // lightest brown
     line(0, 0, randomLength, 0); // draw branch
     translate(randomLength, 0); // translate to end before drawing next Y
-    drawTree(depth-1, thickness-1);
+    drawTree(depth-1, thickness-1, randomLength-1);
     popMatrix();
   }
 }
