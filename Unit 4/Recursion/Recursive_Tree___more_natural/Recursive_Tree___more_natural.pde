@@ -37,15 +37,17 @@ void drawTree(int depth, float thickness, int x2, int y2) {
 
 
     pushMatrix();
-    //randomize length
-
+    
+    //randomize length and angle
+    
     rotate(radians(random(-10, -60)));
     strokeWeight(thickness);
+ 
     //    stroke(111, 62, 10); // medium brown
     line(0, 0, x2, y2); // draw branch
     translate(random(40, 100), 0); // translate to end before drawing next Y
     
-    //pink leaves
+    //pink buds
     stroke(247, 204, 250);
     
     ellipse(x2, y2-20, 5, 6);
@@ -67,31 +69,33 @@ void drawTree(int depth, float thickness, int x2, int y2) {
     line(0, 0, x2, y2); // draw branch
     translate(random(40, 100), 0); // translate to end before drawing next Y
     
-    //PINK leaves
+    //colour of stroke pink buds
     stroke(247, 204, 250);
 
+    //buds
     ellipse(x2, y2, 5, 6);
     ellipse(x2+5, y2, 5, 6);
     ellipse(x2-10, y2-5, 5, 6);
     ellipse(x2-5, y2-10, 5, 6);
     ellipse(x2-5, y2-20, 5, 6);
-    //brown branches
+   
+    //colour brown branches
     stroke(85, 55, 33);
 
     drawTree(depth-1, thickness*0.6, x2, y2);
     popMatrix();
 
 
-    //    // draw third branch
-    //    pushMatrix();
-    //    //randomize lengths of branches
-    //
-    //    rotate(radians(2));
-    //    strokeWeight(thickness);
-    //    //    stroke(131, 93, 52); // lightest brown
-    //    line(0, 0, 100, 0); // draw branch
-    //    translate(random(30,100), 0); // translate to end before drawing next Y
-    //    drawTree(depth-1, thickness-1);
-    //    popMatrix();
+//        // draw third branch
+//        pushMatrix();
+//        //randomize lengths of branches
+//    
+//        rotate(radians(2));
+//        strokeWeight(thickness);
+//        //    stroke(131, 93, 52); // lightest brown
+//        line(0, 0, 100, 0); // draw branch
+//        translate(random(30,100), 0); // translate to end before drawing next Y
+//        drawTree(depth-1, thickness-1);
+//        popMatrix();
   }
 }
