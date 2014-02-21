@@ -1,4 +1,6 @@
 void setup() {
+  
+  colorMode(HSB);
   //pink leaves
   fill(247, 204, 250);
 
