@@ -55,28 +55,19 @@ void draw() {
     //replace
     word += rules.get("F");
   }
-  else {
-    //copy the character directly
-    word += axiom.charAt(frameCount - 1);
-  }
-  
-    if (axiom.charAt(frameCount - 1) == '-') {
-    //replace
+  else if 
+    (axiom.charAt(frameCount - 1) == '-')
+  {
     word += rules.get("-");
-  }
-  else {
-    //copy the character directly
-    word += axiom.charAt(frameCount - 1);
-  }
-  
-      if (axiom.charAt(frameCount - 1) == '+') {
-    //replace
+  } 
+  else if (axiom.charAt(frameCount - 1) == '+') {
     word += rules.get("+");
   }
   else {
     //copy the character directly
     word += axiom.charAt(frameCount - 1);
   }
+
 
 
   //Take each character from the axiom and copy it to the new word
