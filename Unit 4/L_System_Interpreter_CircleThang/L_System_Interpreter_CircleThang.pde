@@ -22,7 +22,7 @@
 //
 
 // Contains the starting, or intial, word (axiom)
-String axiom = "FX";
+String axiom = "L";
 
 // Contains the existing word
 String existingWord = "";
@@ -47,21 +47,21 @@ float lineLength = 300;
 float currentLineLength = 0;
 
 // Initial x-position of the turtle
-int xPosition = 400;
+int xPosition = 250;
 
 // Initial y-position of the turtle
-int yPosition = 500;
+int yPosition = 400;
 
 // Initial direction of the turtle (0 degrees: right, 90 degrees: down, 180 degrees: left,
 //                                  270 degrees: up).
-int direction = 270;
+int direction = 0;
 
 // Angle of rotation for the turtle (when a + or a - is processed)
-float angle = 25; 
+float angle = 60; 
 
 // Optimal number of word re-writes that should occur
 // (You can directly control how many re-writes occur with the right arrow key)
-int n = 15;
+int n = 10;
 
 // Whether to show on-screen results (easier to follow, but slower)
 // or whether to show results in the console (harder to see what's going on, but program runs faster)
@@ -98,8 +98,9 @@ void setup() {
   //
   // Some L-systems have more than one rule for replacements.
   // Just add another ".set" line for additional rules
-  rules.set("F", "FF-[-F+F]+[+F++F]");
-  rules.set("X", "FF+[+F-F]+[-F]");
+  rules.set("L", "L+R++R-L--LL-R+");
+  rules.set("R", "-L+RR++R+L--L-R");
+
   // Before any re-writes, the existing word is set to the axiom
   existingWord = axiom;
   newWord = existingWord;
@@ -164,14 +165,14 @@ void rewriteWord() {
   for (currentCharacter= 0; currentCharacter < existingWord.length(); currentCharacter++) {
 
     // Check each character - if it matches a rule, replace it
-    if ( existingWord.charAt(currentCharacter) == 'X') {
+    if ( existingWord.charAt(currentCharacter) == 'L') {
       // replace
-      newWord += rules.get("X");
+      newWord += rules.get("L");
     } 
-    else if ( existingWord.charAt(currentCharacter) == 'F') {
+    else   if ( existingWord.charAt(currentCharacter) == 'R') {
       // replace
-      newWord += rules.get("F");
-    }
+      newWord += rules.get("R");
+    } 
     else {
       // copy the character directly
       newWord += existingWord.charAt(currentCharacter);
@@ -230,36 +231,29 @@ void turtleDraw() {
   ellipse(0, 0, 10, 10);
 
   // Set the line length for this round of drawing
-  currentLineLength = lineLength / pow(2, rewriteCount);
+  currentLineLength = lineLength / pow(2.5, rewriteCount);
 
   // Iterate  
   for (currentCharacter= 0; currentCharacter < newWord.length(); currentCharacter++) {
 
-    if ( newWord.charAt(currentCharacter) == '+') {
+    // Check each character - draw or rotate as necessary
+    if ( newWord.charAt(currentCharacter) == 'L') {
+      // Draw a segment
+      line(0, 0, currentLineLength, 0);
+      translate(currentLineLength, 0);
+    } 
+    else if ( newWord. charAt(currentCharacter) == 'R') {
+      // Draw a segment
+      line(0, 0, currentLineLength, 0);
+      translate(currentLineLength, 0);
+    }
+    else if ( newWord.charAt(currentCharacter) == '+') {
       // Turn left      
       rotate(radians(-angle));
     }
     else if ( newWord.charAt(currentCharacter) == '-') {
       // Turn right
       rotate(radians(angle));
-    }
-    else if ( newWord.charAt(currentCharacter) == '[') {
-      // Pushing (saving) current position and rotation 
-      //info onto the stack
-      pushMatrix();
-    }
-    else if ( newWord.charAt(currentCharacter) == ']') {
-      // Popping (removing) most recently saved location&rotation
-      // info from stack
-      popMatrix();
-    } else if (newWord. charAt(currentCharacter) == 'C0' {
-    //green
-    stroke(72,39,17);
-    }
-    else {
-      // Draw a segment
-      line(0, 0, currentLineLength, 0);
-      translate(currentLineLength, 0);
     }
   }
 }
