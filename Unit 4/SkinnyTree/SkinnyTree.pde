@@ -22,7 +22,7 @@
 //
 
 // Contains the starting, or intial, word (axiom)
-String axiom = "FX";
+String axiom = "F";
 
 // Contains the existing word
 String existingWord = "";
@@ -47,21 +47,21 @@ float lineLength = 300;
 float currentLineLength = 0;
 
 // Initial x-position of the turtle
-int xPosition = 400;
+int xPosition = 600;
 
 // Initial y-position of the turtle
-int yPosition = 500;
+int yPosition = 400;
 
 // Initial direction of the turtle (0 degrees: right, 90 degrees: down, 180 degrees: left,
 //                                  270 degrees: up).
 int direction = 270;
 
 // Angle of rotation for the turtle (when a + or a - is processed)
-float angle = 25; 
+float angle = 27.5; 
 
 // Optimal number of word re-writes that should occur
 // (You can directly control how many re-writes occur with the right arrow key)
-int n = 15;
+int n = 5;
 
 // Whether to show on-screen results (easier to follow, but slower)
 // or whether to show results in the console (harder to see what's going on, but program runs faster)
@@ -98,8 +98,8 @@ void setup() {
   //
   // Some L-systems have more than one rule for replacements.
   // Just add another ".set" line for additional rules
-  rules.set("F", "FF-[-F+F]+[+F++F]");
-  rules.set("X", "FF+[+F-F]+[-F]");
+  rules.set("F", "F[+F]F[-F]F");
+
   // Before any re-writes, the existing word is set to the axiom
   existingWord = axiom;
   newWord = existingWord;
@@ -230,7 +230,7 @@ void turtleDraw() {
   ellipse(0, 0, 10, 10);
 
   // Set the line length for this round of drawing
-  currentLineLength = lineLength / pow(2, rewriteCount);
+  currentLineLength = lineLength / pow(3, rewriteCount);
 
   // Iterate  
   for (currentCharacter= 0; currentCharacter < newWord.length(); currentCharacter++) {
@@ -252,9 +252,6 @@ void turtleDraw() {
       // Popping (removing) most recently saved location&rotation
       // info from stack
       popMatrix();
-    } else if (newWord. charAt(currentCharacter) == '0' {
-    //green
-    stroke(72,39,17);
     }
     else {
       // Draw a segment
